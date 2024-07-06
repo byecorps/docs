@@ -1,0 +1,59 @@
+diff --git a/user-components/Icon.astro b/user-components/Icon.astro
+index 7575cc787022f2d4baed7fe543aa2604e5438c2c..07eccbb21052fed519d094f4eea525d7ec7c69aa 100644
+--- a/user-components/Icon.astro
++++ b/user-components/Icon.astro
+@@ -1,5 +1,6 @@
+ ---
+ import { Icons } from '../components/Icons';
++import 'iconify-icon';
+ 
+ interface Props {
+ 	name: keyof typeof Icons;
+@@ -13,21 +14,37 @@ const { name, label, size = '1em', color } = Astro.props;
+ const a11yAttrs = label ? ({ 'aria-label': label } as const) : ({ 'aria-hidden': 'true' } as const);
+ ---
+ 
+-<svg
+-	{...a11yAttrs}
+-	class={Astro.props.class}
+-	width="16"
+-	height="16"
+-	viewBox="0 0 24 24"
+-	fill="currentColor"
+-	set:html={Icons[name]}
+-/>
++{
++	(Icons[name] ?
++    <svg
++		{...a11yAttrs}
++        class={Astro.props.class}
++        width="16"
++        height="16"
++        viewBox="0 0 24 24"
++        fill="currentColor"
++        set:html={Icons[name]}
++    /> :
++	<iconify-icon
++			icon={name}
++			{...a11yAttrs}
++            class={Astro.props.class}
++            width="16"
++            height="16"
++            viewBox="0 0 24 24"
++            fill="currentColor"
++	></iconify-icon>)
++}
+ 
+ <style define:vars={{ 'sl-icon-color': color, 'sl-icon-size': size }}>
+-	svg {
++	svg, iconify-icon {
+ 		color: var(--sl-icon-color);
+ 		font-size: var(--sl-icon-size, 1em);
+ 		width: 1em;
+ 		height: 1em;
+ 	}
++	svg.inline, iconify-icon.inline {
++		display: inline !important;
++	}
+ </style>
++
