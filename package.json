@@ -1,0 +1,29 @@
+{
+  "name": "byecorps-docs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.25.0",
+    "@fontsource/ibm-plex-sans": "^5.0.20",
+    "@fontsource/montserrat": "^5.0.18",
+    "astro": "^4.10.2",
+    "astro-icon": "^1.1.0",
+    "iconify-icon": "^2.1.0",
+    "sharp": "^0.32.5"
+  },
+  "devDependencies": {
+    "@iconify-json/fa6-solid": "^1.1.22"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@astrojs/starlight@0.25.0": "patches/@astrojs__starlight@0.25.0.patch"
+    }
+  }
+}

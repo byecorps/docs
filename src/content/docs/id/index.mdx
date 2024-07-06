@@ -1,0 +1,27 @@
+---
+title: ByeCorps ID
+template: splash
+hero:
+    tagline: 'A single ID for everything ByeCorps and beyond.'
+    image:
+        file: ../../../assets/bcid.svg
+    actions:
+        - text: Get started
+          link: /id/get-started/
+          variant: primary
+          icon: right-arrow
+        - text: Get an ID
+          link: https://id.byecorps.com
+          icon: external
+---
+
+import { LinkCard, Card, CardGrid, Icon } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+    <Card title="Open Source" icon="seti:git">
+        ByeCorps ID is open source, so you can nitpick all my silly
+        design choices all you want!
+
+        [Check it out! <Icon class="inline" name="external" />](https://git.byecorps.com/byecorps/id)
+    </Card>
+</CardGrid>

@@ -1,0 +1,78 @@
+---
+title: API Reference
+---
+
+This page contains a brief overview of the entire BCID API.
+
+:::caution
+This page documents API endpoints that are not in production yet but will be included in the pending
+rewrite.
+:::
+
+## Internationalisation (i18n)
+
+ByeCorps ID supports various languages. If you want to translate BCID, please check
+out [our Weblate project](https://translit.litdevs.org/projects/byecorps-id/web/).
+
+### Languages
+```http request
+GET https://id.byecorps.com/api/i18n/languages
+```
+
+:::note
+This endpoint is intended for the language switcher on the website. It does not support setting
+a language for a specific ID.
+:::
+
+Returns the list of languages BCID is currently set up to support alongside the current language
+for this session.
+
+```json
+{
+    "response": {
+        "success": true,
+        "status_code": 200
+    },
+    "body": {
+        "current": "en_UWU",
+        "languages": [
+            {
+                "code": "en",
+                "name": "English (Traditional)",
+                "flag": "uk"
+            },
+            {
+                "code": "en_US",
+                "name": "English (Simplified)",
+                "flag": "usa"
+            }
+        ]
+    }
+}
+```
+
+## Misc
+
+These items don't fit into the other categories.
+
+### Status
+
+```http request
+GET https://id.byecorps.com/api/status
+```
+
+Used to check for uptime on the server, and returns the time of the request.
+
+```json
+{
+    "response": {
+        "success": true,
+        "status_code": 200
+    },
+    "body": {
+        "message": "Science compels us to explode the sun!",
+        "time": 1720279822
+    }
+}
+```
+
